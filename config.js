@@ -12,7 +12,16 @@ if (process.env.OPENSHIFT_MYSQL_DB_HOST != undefined) {
         // Configure your URL and mail settings here
         production: {
             url: 'http://'+process.env.OPENSHIFT_APP_DNS,
-            mail: {},
+            mail: {
+                transport: 'SMTP',
+                options: {
+                    service: 'Mailgun',
+                    auth: {
+                        user: 'postmaster@lajlev.mailgun.org',
+                        pass: '8reow6ifq3s8'
+                    }
+                }
+            },
             database: {
                 client: 'mysql',
                 connection: {
